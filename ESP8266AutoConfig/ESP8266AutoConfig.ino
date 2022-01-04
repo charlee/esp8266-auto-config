@@ -8,7 +8,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println();
 
-  // connect IO4 with GND to reconfig WiFi
+  // connect IO4 to GND to reconfig WiFi
   pinMode(RECONFIG_PIN, INPUT_PULLUP);
 
   int reconfig = digitalRead(RECONFIG_PIN);
