@@ -95,7 +95,8 @@ void loop() {
 ```
 
 If you need to reconfigure WiFi, use a push button to connect any IO port to GND,
-and test it in the `setup()`:
+and test it in the `setup()`. Then user can reconfigure WiFi by resetting the device
+when holding the button.
 
 ```cpp
 #include "ESP8266AutoConfig.h"
