@@ -22,10 +22,10 @@ void WiFiConfigClass::validateChecksum() {
   size_t i;
   uint8_t sum = 0;
   for (i = 0; i < sizeof(WiFiConfigData); i++) {
-    sum += *((uint8_t*)&config);
+    sum += *((uint8_t*)&config + i);
   }
 
-  m_isValid = validateChecksum();
+  m_isValid = (sum == 0);
 
   if (!m_isValid) {
     config.ssid[0] = 0;
@@ -60,6 +60,10 @@ void WiFiConfigClass::commit() {
   EEPROMConfig<WiFiConfigData> writer;
   computeChecksum();
   writer.write(config);
+}
+
+bool WiFiConfigClass::isValid() {
+  return m_isValid;
 }
 
 
